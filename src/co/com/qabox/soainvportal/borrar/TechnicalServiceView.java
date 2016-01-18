@@ -8,12 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 import co.com.qabox.soainv.ejb.TechnicalServiceLocal;
-import co.com.qabox.soainv.ejb.TechnicalServiceRemote;
 import co.com.qabox.soainv.to.TechnicalServiceTO;
 
 @ManagedBean
@@ -25,7 +21,6 @@ public class TechnicalServiceView implements Serializable {
 	 */
 	private static final long serialVersionUID = -4536906140213308826L;
 	@Inject TechnicalServiceTO techServTo;
-	//@Inject TechnicalServiceRemote technicalServiceRemote;
 	@Inject TechnicalServiceLocal technicalServiceRemote;
 	
 	private String nombre;
@@ -43,15 +38,6 @@ public class TechnicalServiceView implements Serializable {
 		System.out.println("Testing");
 		
 		
-//		TechnicalServiceRemote techServBean = null;
-//		try {
-//			techServBean = getService(JNDI_TECH_SERV_BEAN);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-//		if ( techServBean != null ){
 		if  (technicalServiceRemote != null){
 			TechnicalServiceTO to = new TechnicalServiceTO();
 			to.setName("Crudo");
