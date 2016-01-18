@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <!-- A reference to an EJB in the same server with a custom JNDI binding -->
+    <ejb-ref>
+        <ejb-ref-name>java:module/TechnicalServiceBean</ejb-ref-name>
+        <jndi-name>java:module/TechnicalServiceBean!co.com.qabox.soainv.ejb.TechnicalServiceLocal</jndi-name>
+    </ejb-ref>
+        
+</jboss-web>
