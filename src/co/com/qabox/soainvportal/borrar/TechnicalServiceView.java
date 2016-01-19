@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import co.com.qabox.soainv.ejb.TechnicalServiceLocal;
 import co.com.qabox.soainv.to.TechnicalServiceTO;
 
-@ManagedBean
+@Named("view_technicalservice")
 @RequestScoped
 public class TechnicalServiceView implements Serializable {
 

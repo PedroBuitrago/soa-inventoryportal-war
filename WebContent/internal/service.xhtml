@@ -19,9 +19,9 @@
                     	styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
                         
                         <p:outputLabel for="input" value="#{msg['labels.technicalServiceName']}"/>
-                        <p:inputText id="input" value="#{technicalServiceView.nombre}" />
+                        <p:inputText id="input" value="#{view_technicalservice.nombre}" />
 						<p:commandButton id="saveInfoBtn" 
-                       		actionListener="#{technicalServiceView.saveInfo}" 
+                       		actionListener="#{view_technicalservice.saveInfo}" 
                        			value="Save Info" update="growl"
                        			icon="fa fa-edit" style="max-width:150px;"/>
                        	 <p:growl id="growl" life="2000" />			
