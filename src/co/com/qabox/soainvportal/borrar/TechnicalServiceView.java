@@ -39,13 +39,7 @@ public class TechnicalServiceView implements Serializable {
 		
 		
 		if  (technicalServiceRemote != null){
-			TechnicalServiceTO to = new TechnicalServiceTO();
-			to.setName("Crudo");
-			
-			technicalServiceRemote.saveInfo( to );
-			//techServTo.setName(this.nombre);
-			//technicalServiceRemote.saveInfo(techServTo);
-			//technicalServiceRemote.saveInfo();
+			technicalServiceRemote.saveInfo( techServTo );
 			 addMessage("Almacenamiento OK ");
 		}
 		else{

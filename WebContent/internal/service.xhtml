@@ -19,7 +19,7 @@
                     	styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
                         
                         <p:outputLabel for="input" value="#{msg['labels.technicalServiceName']}"/>
-                        <p:inputText id="input" value="#{view_technicalservice.nombre}" />
+                        <p:inputText id="input" value="#{view_technicalservice.techServTo.name}" />
 						<p:commandButton id="saveInfoBtn" 
                        		actionListener="#{view_technicalservice.saveInfo}" 
                        			value="Save Info" update="growl"

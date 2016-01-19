@@ -4,7 +4,6 @@ import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;
 
 import co.com.qabox.soainv.ejb.TechnicalServiceLocal;
-import co.com.qabox.soainv.ejb.TechnicalServiceRemote;
 import co.com.qabox.soainv.to.TechnicalServiceTO;
 
 public class Resources {
@@ -18,7 +17,8 @@ public class Resources {
     //private TechnicalServiceRemote technicalServiceRemote;
 	private TechnicalServiceLocal technicalServiceRemote;
     
-    
-    @Produces
-    private TechnicalServiceTO techServTo;
+    @Produces public TechnicalServiceTO createTechnicalServiceTO() {
+        System.out.println("TechnicalServiceTO Creado con un productor");
+        return new TechnicalServiceTO();
+    }
 }
