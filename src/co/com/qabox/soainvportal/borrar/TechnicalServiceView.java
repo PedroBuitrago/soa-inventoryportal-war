@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import co.com.qabox.soainv.ejb.TechnicalServiceLocal;
+import co.com.qabox.soainv.exception.SoaInventoryException;
 import co.com.qabox.soainv.to.TechnicalServiceTO;
 
 @Named("view_technicalservice")
@@ -39,7 +40,14 @@ public class TechnicalServiceView implements Serializable {
 		
 		
 		if  (technicalServiceRemote != null){
-			technicalServiceRemote.saveInfo( techServTo );
+			try {
+				technicalServiceRemote.saveInfo( techServTo );
+			} catch (SoaInventoryException e) {
+				
+				//Estandarizacion e internacionalizacion de mensajes
+				
+				 addMessage("Se presento un error salvado la informacion: " +  e.getMessage());
+			}
 			 addMessage("Almacenamiento OK ");
 		}
 		else{

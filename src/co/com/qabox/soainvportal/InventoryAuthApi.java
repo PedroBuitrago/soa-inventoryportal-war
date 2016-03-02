@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 import org.jboss.resteasy.util.DateUtil;
 
 import co.com.qabox.soainvportal.ejb.AuthServiceLocal;
-import co.com.qabox.soainvportal.exceptions.WebAppFriendlyException;
+import co.com.qabox.soainvportal.exception.WebAppFriendlyException;
 import co.com.qabox.soainvportal.to.IdentityDTO;
 import co.com.qabox.soainvportal.to.MenuDTO;
 import co.com.qabox.soainvportal.to.MsgBodyDTO;
@@ -25,7 +25,7 @@ import co.com.qabox.soainvportal.to.MsgHeaderDTO;
 import co.com.qabox.soainvportal.to.MsgMasterDTO;
 import co.com.qabox.soainvportal.to.MsgResultDTO;
 import co.com.qabox.soainvportal.to.ResultType;
-import co.com.qabox.soainv.exceptions.IntegrationException;
+import co.com.qabox.soainv.exception.IntegrationException;
 
 
 @RequestScoped
