@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    
+    <ui:define name="subheader">
+        Esto es un subheader, Esto es un subheader, Esto es un subheader, Esto es un subheader
+    </ui:define>
+    
+        <ui:define name="content">
+	       
+	      <h:form id="viewServiceFormId">
+		        <div class="Container100 ui-fluid">
+		            <div class="ContainerIndent">
+		                <div class="Card ShadowEffect">
+		                    <h2 class="BigTopic">Actualizar Technical Service</h2>
+		                    <h:panelGroup id="display">
+		                    <p:panelGrid columns="4" columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4" layout="grid" 
+		                    	styleClass="ui-panelgrid-blank" style="border:0px none; background-color:transparent;">
+		                        
+		                        <p:outputLabel value="#{msg['labels.createservice.techServTo.name']}" for="editservice_techServTo_name"/>
+		                        <p:inputText id="editservice_techServTo_name" value="#{technicalServiceController.techServTo.name}" 
+		                        	title="#{msg['labels.editservice.techServTo.name']}" required="true" 
+		                        	requiredMessage="#{msg['labels.editservice.techServTo.nameRequired']}"/>
+								<!-- En el sample de Netbeans en el tag de update se actualizaba una lista de otra vista jsf así
+									update="display,:AuditErroresListForm:datalist,:growl".
+									A pesar de haberse creado la vairable, no fué posible poner exactamente lo mismo.
+								 -->
+								<p:commandButton id="saveInfoBtn" 
+		                       		actionListener="#{technicalServiceController.update}" 
+		                       			value="#{msg['labels.editservice.techServTo.updateButton']}" 
+		                       			update="display,growl"
+		                       			icon="fa fa-edit" style="max-width:150px;"
+		                       			oncomplete="handleSubmit(args,'createServiceDialog');"/>
+		                       			
+								 <p:growl id="growl" life="2000" />			
+		                    </p:panelGrid>
+		                    </h:panelGroup>
+		                </div>
+		            </div>
+		        </div>
+			</h:form>
+		    
+		    
+	   </ui:define>
+</ui:composition>
