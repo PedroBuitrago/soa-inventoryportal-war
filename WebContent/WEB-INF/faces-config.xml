@@ -20,7 +20,7 @@
     
     <application>
     	<locale-config>
-     	        <default-locale>en</default-locale>
+     	        <default-locale>es</default-locale>
      	   </locale-config>
        <resource-bundle>
 		<base-name>co.com.qabox.soainvportal.labels</base-name>
