@@ -20,7 +20,7 @@ public class Resources {
 	@Produces
     @EJB(lookup = JNDI_TECH_SERV_BEAN)
     //private TechnicalServiceRemote technicalServiceRemote;
-	private TechnicalServiceLocal technicalServiceRemote;
+	private TechnicalServiceLocal technicalServiceLocal;
 	
 	@Produces
     @EJB(lookup = JNDI_IDENTITY_BEAN)

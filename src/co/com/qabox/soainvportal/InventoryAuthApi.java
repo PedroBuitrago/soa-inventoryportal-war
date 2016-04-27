@@ -117,7 +117,7 @@ public class InventoryAuthApi {
     	
     	LOG.info("Ingresa el usuario: " + user + " con password: " + pass);
     	
-    	MsgMasterDTO master = new MsgMasterDTO();
+    	/*MsgMasterDTO master = new MsgMasterDTO();
     	IdentityDTO identity = new IdentityDTO();
     	MsgBodyDTO body = new MsgBodyDTO();
     	body.setContentType("Identity");
@@ -163,16 +163,17 @@ public class InventoryAuthApi {
 			result.setDesc("DESC ERR_QA_001");
 			result.setResultType(ResultType.ERROR);
 			
-		}
+		}*/
     	
     	/*Cambiar el password*/
-    	identity.setPass("##########");
+    	/*identity.setPass("##########");
     	master.setResult(result);
     	master.setHeader(header);
     	body.setContent(identity);
     	master.setBody(body);
     	
-    	return master;
+    	return master;*/
+    	return null;
     	
     }
 	

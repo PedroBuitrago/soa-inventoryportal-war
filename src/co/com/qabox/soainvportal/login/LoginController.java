@@ -1,9 +1,11 @@
 package co.com.qabox.soainvportal.login;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -11,14 +13,13 @@ import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.util.SecurityUtils;
 
 import co.com.qabox.soainv.ejb.identity.IdentityServiceLocal;
 import co.com.qabox.soainv.exception.IntegrationException;
 import co.com.qabox.soainv.to.identity.IdentityDTO;
 import co.com.qabox.soainv.to.identity.RoleDTO;
 
-//@ManagedBean(name="loginController")
-//@SessionScoped
 @Named("loginController")
 @javax.enterprise.context.SessionScoped
 public class LoginController implements Serializable {
@@ -28,7 +29,7 @@ public class LoginController implements Serializable {
 	private IdentityDTO identity = new IdentityDTO(new RoleDTO());
 	@Inject
 	IdentityServiceLocal identityService;
-
+	
 	private boolean logged = false;
 	
 	@PostConstruct
@@ -84,10 +85,25 @@ public class LoginController implements Serializable {
 	}
 
 	public void logout() {
+		
+		init();
+		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
 		session.invalidate();
-		logged = false;
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("You have been logged out successfully"));
+        ExternalContext externalContext = context.getExternalContext();
+        externalContext.getFlash().setKeepMessages(true);
+        externalContext.invalidateSession();
+        try {
+			//externalContext.redirect("login.xhtml?msg=You have been logged out sucessfully");
+			externalContext.redirect("login.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public IdentityDTO getIdentity() {
@@ -113,6 +129,40 @@ public class LoginController implements Serializable {
 	public void setLogged(boolean logged) {
 		this.logged = logged;
 	}
-
+	
+	public boolean checkProfile(String codeRef){
+		
+		System.out.println("Checking Profile for: " + identity.getRole().getCode() + " and code = " + codeRef);
+		
+		int codeRefInt = -1;
+		
+		try{
+			 codeRefInt = Integer.valueOf(codeRef);
+			System.out.println(codeRefInt + " for ->  " + codeRef);
+		}catch(NumberFormatException e){
+			System.out.println("Error de formato de " + codeRef + " no es un entero");
+			return false;
+		}
+		
+		if ( IdentityDTO.basicValidation(identity) ){
+			
+			int identityCodeRef = -1;
+			try{
+				identityCodeRef = Integer.valueOf(identity.getRole().getCode());
+				System.out.println("El codigo de role en el Identity es: " + identityCodeRef);
+			}catch(NumberFormatException e){
+				System.out.println("Error de formato de " + identity.getRole().getCode() + " no es un entero");
+				return false;
+			}
+			
+			if ( codeRefInt == identityCodeRef )
+				return true;
+			
+		}
+		
+		return false;
+		
+	}
+	
 	
 }

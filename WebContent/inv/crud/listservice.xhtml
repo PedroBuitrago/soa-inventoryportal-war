@@ -25,8 +25,7 @@
 									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 									rows="10" paginator="true" rowsPerPageTemplate="5,10,15"
 									emptyMessage="#{msg['labels.listservice.NoneTechnicalServices']}"
-									reflow="true" 
-									stickyHeader="true">
+									reflow="true">
 
 									<p:ajax event="rowSelect" listener="#{technicalServiceController.onRowSelect(item)}" update=":listserviceFormId:msgs" />
         							<p:ajax event="rowUnselect" listener="#{technicalServiceController.onRowUnselect(item)}" update=":listserviceFormId:msgs" />
@@ -44,6 +43,12 @@
 									</p:column>
 									<p:column headerText="Name" sortBy="#{item.name}">
 										<h:outputText value="#{item.name}" />
+									</p:column>
+									<p:column headerText="Name" sortBy="#{item.alias}">
+										<h:outputText value="#{item.alias}" />
+									</p:column>
+									<p:column headerText="Name" sortBy="#{item.desc}">
+										<h:outputText value="#{item.desc}" />
 									</p:column>
 								</p:dataTable>
 

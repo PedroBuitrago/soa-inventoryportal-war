@@ -1,0 +1,34 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pr="http://primefaces.org/rio">
+
+    
+        <ul class="layout-menu">
+            <li>
+                <a class="menulink ripplelink">
+                    <i class="icon-round58 Fs40"></i>
+                    <span class="Fs18">
+                    <p:outputLabel value="#{loginController.identity.firstName} #{loginController.identity.lastName}"></p:outputLabel>	
+                    <i class="icon-downwards Fright Fs20"></i><br /><span class="Fs12 FontRobotoLight">
+                    <p:outputLabel value="#{loginController.identity.role.name}"></p:outputLabel>	
+                    </span></span>
+                </a>
+                <ul>
+                    <li><a href="#" class="menulink ripplelink"><i class="icon-user158 Fs16"></i> User Profile</a></li>
+                    <li><a href="#" class="menulink ripplelink"><i class="icon-settings49 Fs16"></i>System Settings</a></li>
+                    <li class="menulink ripplelink">
+                    	<p:commandLink styleClass="menulink ripplelink" type="submit"  value="Logout" action="#{loginController.logout}">
+                    		<i class="icon-thermostat1 Fs16"></i>
+                    	</p:commandLink>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    
+
+</ui:composition>

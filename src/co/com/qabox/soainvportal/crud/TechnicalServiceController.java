@@ -26,9 +26,8 @@ public class TechnicalServiceController implements Serializable {
 	private static final long serialVersionUID = -4536906140213308826L;
 	
 	//@Inject TechnicalServiceTO techServTo;
-	@Inject TechnicalServiceLocal technicalServiceRemote;
+	@Inject TechnicalServiceLocal technicalServiceLocal;
 	private List<TechnicalServiceTO> items = new ArrayList<TechnicalServiceTO>();
-	//private List<TechnicalServiceTO> selectedItems = null;
 	private TechnicalServiceTO selectedItem = null;
 	
 	private ResourceBundle BUNDLE = ResourceBundle.getBundle("co/com/qabox/soainvportal/labels");
@@ -55,6 +54,8 @@ public class TechnicalServiceController implements Serializable {
 					item = new TechnicalServiceTO();
 		        	item.setId(Integer.valueOf(i));
 		        	item.setName("Servicio Numero " + i);
+		        	item.setDesc("Este es el servicio: " + i);
+		        	item.setAlias("Alias: " + i);
 		        	
 		        	this.items.add(item);
 				}
@@ -164,25 +165,10 @@ public class TechnicalServiceController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
     
-//    public TechnicalServiceTO getTechServTo() {
-//		return techServTo;
-//	}
-//
-//	public void setTechServTo(TechnicalServiceTO techServTo) {
-//		this.techServTo = techServTo;
-//	}
 
 	public TechnicalServiceLocal getFacade() {
-		return technicalServiceRemote;
+		return technicalServiceLocal;
 	}
-
-//	public List<TechnicalServiceTO> getSelectedItems() {
-//		return selectedItems;
-//	}
-//
-//	public void setSelectedItems(List<TechnicalServiceTO> selectedItems) {
-//		this.selectedItems = selectedItems;
-//	}
 
 	public TechnicalServiceTO getSelectedItem() {
 		return selectedItem;

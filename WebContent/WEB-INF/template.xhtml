@@ -1,69 +1,96 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-	<f:loadBundle basename="co.com.qabox.soainvportal.labels" var="msg"/>
+<f:loadBundle basename="co.com.qabox.soainvportal.labels" var="msg" />
 
-    <h:head>
-        <f:facet name="first">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-            <meta name="apple-mobile-web-app-capable" content="yes" />
-        </f:facet>
-        <title>QABox Technologies</title>
-        
-        <h:outputScript name="js/ripple-effect.js" library="rio-layout" />
-        <h:outputScript name="js/perfect-scrollbar.js" library="rio-layout" />
-        <h:outputScript name="js/layout.js" library="rio-layout" />
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>QABox Technologies</title>
 
-        <ui:insert name="head" />
-    </h:head>
+	<h:outputScript name="js/ripple-effect.js" library="rio-layout" />
+	<h:outputScript name="js/perfect-scrollbar.js" library="rio-layout" />
+	<h:outputScript name="js/layout.js" library="rio-layout" />
 
-	<h:body>
-        
-        <ui:include src="topbar.xhtml" />
-        
-        <div id="wrapper">
-            <div id="wrapperIndent">
+	<ui:insert name="head" />
+</h:head>
 
-                <ui:include src="layoutmenu.xhtml" />
+<h:body>
 
-                <div id="layout-portlets-cover">
-                    
-                    <ui:insert name="content"/>
-                    
-                    <div class="Container100">
-                        <div class="ContainerIndent Fs12 BoldGray FontRobotoRegular">
-                            <div class="EmptyBox10"></div>
-                            <i class="icon-mountains14 Fs16 Fleft"></i> QABox Technologies- SoaInventory |  All rights reserved.
-                            <div class="EmptyBox10"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
-                    <f:facet name="start">
-                        <p:graphicImage name="images/preloader.gif" library="rio-layout"/>
-                    </f:facet>
+	<ui:include src="topbar.xhtml" />
 
-                    <f:facet name="complete">
-                        <h:outputText value="" />
-                    </f:facet>
-                </p:ajaxStatus>
-            </div>
-        </div>
+	<div id="wrapper">
+		<div id="wrapperIndent">
+				<c:choose>
+					<c:when test="#{loginController.checkProfile(1)}">
+						<ui:include src="layoutmenu1.xhtml" />
+					</c:when>
+					<c:when test="#{loginController.checkProfile(2)}">
+						<ui:include src="layoutmenu2.xhtml" />
+					</c:when>
+					<c:when test="#{loginController.checkProfile(3)}">
+						<ui:include src="layoutmenu3.xhtml" />
+					</c:when>
+					<c:when test="#{loginController.checkProfile(4)}">
+						<ui:include src="layoutmenu3.xhtml" />
+					</c:when>
+					<c:when test="#{loginController.checkProfile(5)}">
+						<ui:include src="layoutmenu3.xhtml" />
+					</c:when>
+					<c:otherwise>
+						<ui:include src="layoutmenuDefault.xhtml" />
+					</c:otherwise>
+				</c:choose>
+			
+			
 
-        <h:outputStylesheet name="css/core-layout.css" library="rio-layout" />
-        <h:outputStylesheet name="css/animate.css" library="rio-layout" />
-        <h:outputStylesheet name="css/rio-font.css" library="rio-layout" />
-        <h:outputStylesheet name="css/ripple-effect.css" library="rio-layout" />
-        <h:outputStylesheet name="css/perfect-scrollbar.css" library="rio-layout" />
-        <h:outputStylesheet name="css/font-awesome.css" library="rio-layout" />
-        <h:outputStylesheet name="css/rio-layout.css" library="rio-layout" />
-    </h:body>
+			<div id="layout-portlets-cover">
+
+
+
+				<ui:insert name="content" />
+
+				<div class="Container100">
+					<div class="ContainerIndent Fs12 BoldGray FontRobotoRegular">
+						<div class="EmptyBox10"></div>
+						<i class="icon-mountains14 Fs16 Fleft"></i> QABox Technologies-
+						SoaInventory | All rights reserved.
+						<div class="EmptyBox10"></div>
+					</div>
+				</div>
+			</div>
+
+			<p:ajaxStatus
+				style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+				<f:facet name="start">
+					<p:graphicImage name="images/preloader.gif" library="rio-layout" />
+				</f:facet>
+
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+		</div>
+	</div>
+
+	<h:outputStylesheet name="css/core-layout.css" library="rio-layout" />
+	<h:outputStylesheet name="css/animate.css" library="rio-layout" />
+	<h:outputStylesheet name="css/rio-font.css" library="rio-layout" />
+	<h:outputStylesheet name="css/ripple-effect.css" library="rio-layout" />
+	<h:outputStylesheet name="css/perfect-scrollbar.css"
+		library="rio-layout" />
+	<h:outputStylesheet name="css/font-awesome.css" library="rio-layout" />
+	<h:outputStylesheet name="css/rio-layout.css" library="rio-layout" />
+</h:body>
 
 </html>

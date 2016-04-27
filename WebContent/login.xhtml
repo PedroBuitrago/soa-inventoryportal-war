@@ -46,14 +46,15 @@
                     	required="true"/></div>
                     <div class="EmptyBox10"></div>
                     <div class="Wid100"><p:inputText type="password" placeholder="Password" value="#{loginController.identity.pass}" required="true" 
-                    	styleClass="Wid80 TexAlCenter Fs18"/></div>
+                    	styleClass="Wid80 TexAlCenter Fs18" feedback="false" redisplay="true"/></div>
                     <div class="EmptyBox10"></div>
                     <div class="Wid100"><p:selectOneMenu placeholder="Rol" styleClass="Wid70 TexAlCenter Fs18" value="#{loginController.identity.role.code}">
-                    						<f:selectItem itemLabel="#{msgs['login.roles.selectone']}" itemValue="" />
-								            <f:selectItem itemLabel="#{msgs['login.roles.analyst']}" itemValue="0" />
-								            <f:selectItem itemLabel="#{msgs['login.roles.architect']}" itemValue="1" />
-								            <f:selectItem itemLabel="#{msgs['login.roles.developer']}" itemValue="2" />
-								            <f:selectItem itemLabel="#{msgs['login.roles.manager']}" itemValue="3" />
+                    						<f:selectItem itemLabel="#{msgs['login.roles.selectone']}" itemValue="0" />
+								            <f:selectItem itemLabel="#{msgs['login.roles.analyst']}" itemValue="1" />
+								            <f:selectItem itemLabel="#{msgs['login.roles.architect']}" itemValue="2" />
+								            <f:selectItem itemLabel="#{msgs['login.roles.developer']}" itemValue="3" />
+								            <f:selectItem itemLabel="#{msgs['login.roles.manager']}" itemValue="4" />
+								            <f:selectItem itemLabel="#{msgs['login.roles.admin']}" itemValue="5" />
 								        </p:selectOneMenu>
                     	</div>
                    
