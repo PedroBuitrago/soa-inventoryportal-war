@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+		<div class="Container100">
+			<div class="ContainerIndent">
+				<div class="Card ShadowEffect  ">
+					<div class="Container100">
+						<div class="ContainerIndent">
+							<h2 class="TexAlCenter BigTopic">
+								<h:outputText value="#{msg['labels.listservice.title']}" />
+							</h2>
+							<h:form id="listserviceFormId">
+							
+								<p:growl id="msgs" showDetail="true" />
+								
+								<p:dataTable id="singleDT" var="item"
+									value="#{technicalServiceController.items}"
+									selectionMode="single"
+									selection="#{technicalServiceController.selectedItem}"
+									rowKey="#{item.id}"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rows="10" paginator="true" rowsPerPageTemplate="5,10,15"
+									emptyMessage="#{msg['labels.listservice.NoneTechnicalServices']}"
+									reflow="true">
+
+									<p:ajax event="rowSelect" listener="#{technicalServiceController.onRowSelect(item)}" update=":listserviceFormId:msgs" />
+        							<p:ajax event="rowUnselect" listener="#{technicalServiceController.onRowUnselect(item)}" update=":listserviceFormId:msgs" />
+
+									<f:facet name="header">
+										<h:outputText value="#{msg['labels.listservice.tableName']}" />
+									</f:facet>
+
+									<p:ajax event="rowSelect"
+										update=":listserviceFormId:technicalServiceDetail"
+										oncomplete="PF('technicalServiceDialog').show()" />
+
+									<p:column headerText="Id" sortBy="#{item.id}">
+										<h:outputText value="#{item.id}" />
+									</p:column>
+									<p:column headerText="Name" sortBy="#{item.name}">
+										<h:outputText value="#{item.name}" />
+									</p:column>
+									<p:column headerText="Name" sortBy="#{item.alias}">
+										<h:outputText value="#{item.alias}" />
+									</p:column>
+									<p:column headerText="Name" sortBy="#{item.desc}">
+										<h:outputText value="#{item.desc}" />
+									</p:column>
+								</p:dataTable>
+
+								<p:dialog
+									header="#{msg['labels.listservice.technicalServiceItem']}"
+									widgetVar="technicalServiceDialog" modal="true"
+									showEffect="fade" hideEffect="fade" resizable="false"
+									responsive="true">
+									<p:outputPanel id="technicalServiceDetail"
+										style="text-align:center;">
+										<p:panelGrid columns="2"
+											rendered="#{not empty technicalServiceController.selectedItem}"
+											layout="grid" styleClass="ui-panelgrid-blank">
+											
+											<h:outputText value="Id:" style="font-weight: bold" />
+											<h:outputText value="#{technicalServiceController.selectedItem.id}" />
+
+											<h:outputText value="Name" style="font-weight: bold" /> 
+											<h:outputText value="#{technicalServiceController.selectedItem.name}" />
+
+										</p:panelGrid>
+									</p:outputPanel>
+								</p:dialog>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

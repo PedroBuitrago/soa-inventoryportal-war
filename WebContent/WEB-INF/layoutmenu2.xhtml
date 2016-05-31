@@ -8,31 +8,18 @@
 
     <div class="Animated05" id="layout-menu-cover">
         
-         <ui:include src="profileInfo.xhtml" />
+        <ui:include src="profileInfo.xhtml" />
         
         <div class="Separator"></div>
         
         <pr:menu>
-            <p:menuitem id="rm_dashboard" value="Dashboard" icon="icon-planet29" outcome="createservice"/>
-            <p:submenu id="rm_theme" label="QA-Box - SOA Inventory" icon="icon-mountains14">
-                <p:menuitem id="rm_sample" value="Sample Page" icon="fa fa-columns" outcome="createservice" />
-                <p:menuitem id="rm_forms" value="Form Elements" icon="icon-browser" outcome="createservice" />
-                <p:menuitem id="rm_data" value="Data Components" icon="icon-calendar" outcome="createservice" />
-                <p:menuitem id="rm_datatable" value="DataTable" icon="icon-grid-alt" outcome="createservice" />
-                <p:menuitem id="rm_panels" value="Panels" icon="icon-screen47 Fs16" outcome="createservice" />
-                <p:menuitem id="rm_overlays" value="Overlays" icon="icon-windows-1" outcome="createservice" />
-                <p:menuitem id="rm_menus" value="Menus" icon="icon-link60 Fs16" outcome="createservice" />
-                <p:menuitem id="rm_messages" value="Messages" icon="icon-notifications1 Fs16" outcome="createservice" />
-                <p:menuitem id="rm_fileupload" value="FileUpload" icon="icon-task" outcome="createservice" />
-                <p:menuitem id="rm_misc" value="Misc" icon="icon-nfc1" outcome="createservice" />
+            <p:menuitem id="rm_dashboard" value="#{msg['menu.1.servicesMasterLabel']}" icon="icon-planet29" outcome="createservice"/>
+            <p:submenu id="rm_theme" label="#{msg['menu.1.technicalServicesLabel']}" icon="icon-mountains14">
+                <p:menuitem id="item1Id" value="#{msg['menu.1.listServices']}" icon="fa fa-columns" outcome="listservice" />
+                <p:menuitem id="item2Id" value="#{msg['menu.1.createService']}" icon="icon-browser" outcome="createservice" />
+                <p:menuitem id="item3Id" value="#{msg['menu.1.checkBusinessServices']}" icon="icon-browser" outcome="checkBusinessServices" />
             </p:submenu>
-            <p:submenu id="rm_default" label="Default Pages" icon="icon-copy31">
-                <p:menuitem id="rm_empty" value="Empty Page" icon="icon-ipad" outcome="createservice" />
-                <p:menuitem id="rm_login" value="Login Page" icon="icon-in-alt" outcome="createservice" />
-                <p:menuitem id="rm_error" value="Error Page" icon="icon-close" outcome="createservice" />
-                <p:menuitem id="rm_404" value="404 Page" icon="icon-close" outcome="createservice" />
-                <p:menuitem id="rm_access" value="Access Denied Page" icon="icon-turn17" outcome="/error" />
-            </p:submenu>
+            
             <p:submenu id="rm_hierarchy" label="Menu Hierarchy" icon="icon-share39">
                 <p:submenu id="rm_sm1" label="Submenu 1" icon="icon-folder215">
                     <p:submenu id="rm_sm11" label="Submenu 1.1" icon="icon-folder215">

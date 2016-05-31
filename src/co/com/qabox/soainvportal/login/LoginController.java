@@ -93,7 +93,7 @@ public class LoginController implements Serializable {
 		session.invalidate();
 		
 		FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("You have been logged out successfully"));
+        //context.addMessage(null, new FacesMessage("You have been logged out successfully"));
         ExternalContext externalContext = context.getExternalContext();
         externalContext.getFlash().setKeepMessages(true);
         externalContext.invalidateSession();
